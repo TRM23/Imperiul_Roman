@@ -1,0 +1,40 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif; /* Backup de font */
+    text-align: center; /* Text pe centru */
+    margin: 0; /* Scoate marginea standard */
+    background-color: #FADADD; /* Sa se background-ul roz deschis */
+}
+
+#container {
+    display: flex; /* Folosim flexbox layout */
+    flex-direction: column; /* Elementele exista unul sub altul */
+    align-items: center; /* Center-align elementele orizontal */
+    justify-content: center; /* Center-align elementele vertical */
+    height: 100vh;
+}
+
+#image-container{
+    
+}
+
+#question {
+    font-family: 'Sacramento', cursive; /* Aplica fontul in intrebare */
+    font-size: 52px; /* Selecteaza marimea font-ului la intrebare */
+}
+
+#options {
+    margin-top: 20px; /* Adauga un spatiu deasupra optiunilor */
+}
+
+button{
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 26px;
+    font-family: 'Sacramento', cursive;
+    background-color: #fb607f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
