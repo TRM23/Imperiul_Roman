@@ -15,8 +15,11 @@ body {
     height: 100vh;
 }
 
-#image-container{
-    
+#image-container img {
+    max-width: 90%; /* Ensures it doesn't exceed the screen width */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Centers the image */
+    margin: 0 auto; /* Centers it horizontally */
 }
 
 #question {

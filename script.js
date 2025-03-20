@@ -87,15 +87,77 @@ function displayCatHeart() {
     var imageContainer = document.getElementById('image-container');
     //Creeaza un nou image-element pentru gif 2
     var catHeartImage = new Image();
+    var catHeartImage2 = new Image();
     //Seteaza sursa (locatia fisierului) pentru gif 2
     catHeartImage.src = 'love.gif'; //presupunem ca gif 2 se numeste "cat-heart.gif"
     //Setam un alt text pentru imagine (pentru sufletul meu)
     catHeartImage.alt = 'Cat Heart';
+    catHeartImage.style.maxWidth = "90%"; // Makes sure it fits within the screen
+    catHeartImage.style.height = "auto"; // Keeps aspect ratio
+    catHeartImage.style.display = "block"; // Centers the image
+    catHeartImage.style.margin = "0 auto"; // Centers horizontally
     //Cand se incarca gif 2, adauga-l la containerul de imagine
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);
         //Ascunde containerul de optiuni
         document.getElementById('options').style.display = 'none';
+        var thankYouText = document.createElement('pp');
+        thankYouText.textContent = 'Multumesc pentru ca m-ai onorat cu acest raspuns (sper ca nu esti un extraterestru si nu o sa dispari ca si Crystal si Amber) <3 <3 <3';
+        thankYouText.style.textAlign = 'center';
+        thankYouText.style.fontFamily = 'Sacremento';
+        thankYouText.style.fontSize = '24px'; 
+        thankYouText.style.fontWeight = 'bold'; 
+        thankYouText.style.color = '#ff4d6d'; 
+        thankYouText.style.marginTop = '10px';
+
+        const heartColor = '#ff4d6d'; // Define the heart color
+        const style = document.createElement('style');
+        if (!document.getElementById('heart-style')) {
+            style.id = 'heart-style';
+            style.textContent = `
+                .heart {
+                    position: absolute;
+                    top: 24%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    height: 150px;
+                    width: 150px;
+                    background: ${heartColor};
+                    box-shadow: 15px 5px 150px 20px ${heartColor};
+                    animation: heartBeat 0.6s linear infinite;
+                }
+                .heart::before, .heart::after {
+                    content: "";
+                    position: absolute;
+                    width: 150px;
+                    height: 150px;
+                    right: 70%;
+                    background: ${heartColor};
+                    border-radius: 50%;
+                }
+                .heart::before {
+                    top: -50%;
+                    left: 0;
+                }
+                .heart::after {
+                    left: 50%;
+                    top: 0;
+                }
+                @keyframes heartBeat {
+                    0% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.07); }
+                    80% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+                    100% { transform: translate(-50%, -50%) rotate(-45deg) scale(0.8); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        if (!document.querySelector('.heart')) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+        }
+        imageContainer.appendChild(thankYouText);
     };
 }
 
